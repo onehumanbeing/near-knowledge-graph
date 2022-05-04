@@ -1,0 +1,79 @@
+.cover {
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,
+  #35D07F 0%, #2aa666 47.7%, #207d4c 92.3% );
+  border-radius: .5em;
+}
+.vh-80 {
+  height: 80vh!important;
+}
+.nav-icon {
+  height: 45px;
+  width: 45px;
+}
+
+.menu {
+  width: 200px;
+  min-height: 80vh;
+  border: #000 1px solid;
+  box-shadow: 5px 10px 13px #47fafa;
+  padding: 5px 15px;
+  border-radius: 10px;
+  float: left;
+}
+
+.near_graph {
+  border: #000 1px solid;
+  box-shadow: 5px 10px 13px #ec70f5;
+  float: left;
+  min-height: 80vh;
+  width: calc(100vw - 360px);
+  margin-left: 40px;
+  border-radius: 10px;
+}
+
+.main {
+  padding: 10px 20px;
+}
+
+.create_root_bar {
+  height: 24px;
+  display: flex; 
+  margin-top: 12px;
+}
+
+.black_border_bottom {
+  border-bottom: 1px #000 solid;
+}
+
+.search_result {
+  z-index: 100000;
+  padding: 15px 0px 0px 15px;
+  position: absolute;
+  margin-top: 40px;
+  background-color: #fff;
+  width: inherit;
+  border: #000 1px solid;
+}
+
+.result_item {
+  padding: 5px;
+}
+
+.graph_svg {
+  z-index: 100;
+}
+
+.item {
+  color: #000;
+  background-color: #fff;
+}
+
+.item:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.item_selected {
+  color: #fff;
+  background-color: #000;
+}

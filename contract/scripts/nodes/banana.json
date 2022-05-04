@@ -1,0 +1,10 @@
+{
+    "related_node_id": "1",
+    "data": {
+        "name": "Banana",
+        "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Banana_and_cross_section.jpg/500px-Banana_and_cross_section.jpg",
+        "data": "https://en.wikipedia.org/wiki/Banana"
+    },
+    "relation_from": "Nice to have",
+    "relation_to": "Eat together"
+}

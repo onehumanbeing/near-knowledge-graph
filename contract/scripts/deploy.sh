@@ -1,0 +1,1 @@
+near deploy -f --wasmFile ../out/main.wasm  --accountId $CONTRACT_NAME

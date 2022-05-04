@@ -1,0 +1,1 @@
+near call $CONTRACT_NAME create_node "$(<nodes/banana.json)" --accountId abaaba.testnet --amount 0.01

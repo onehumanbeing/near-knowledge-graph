@@ -1,0 +1,10 @@
+{
+    "related_node_id": "1",
+    "data": {
+        "name": "Sheep",
+        "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flock_of_sheep.jpg/500px-Flock_of_sheep.jpg",
+        "data": "https://simple.wikipedia.org/wiki/Domestic_sheep"
+    },
+    "relation_from": "eat",
+    "relation_to": "eat"
+}

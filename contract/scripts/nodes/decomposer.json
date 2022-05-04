@@ -1,0 +1,10 @@
+{
+    "related_node_id": "3",
+    "data": {
+        "name": "Decomposer",
+        "media": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Fungi_in_Borneo.jpg",
+        "data": "https://simple.wikipedia.org/wiki/Decomposer"
+    },
+    "relation_from": "decompose",
+    "relation_to": "decompose"
+}

@@ -1,0 +1,6 @@
+{
+    "node_id": "1",
+    "related_node_id": "4",
+    "relation_from": "nutrient",
+    "relation_to": "nutrient"
+}

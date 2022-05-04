@@ -1,0 +1,10 @@
+{
+    "related_node_id": "1",
+    "data": {
+        "name": "Rabbit",
+        "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Houplin-Ancoisne_lapin_du_le_parc_Mosa%C3%AFc_en_2020.jpg/500px-Houplin-Ancoisne_lapin_du_le_parc_Mosa%C3%AFc_en_2020.jpg",
+        "data": "https://simple.wikipedia.org/wiki/Rabbit"
+    },
+    "relation_from": "eat grass",
+    "relation_to": "eat grass"
+}

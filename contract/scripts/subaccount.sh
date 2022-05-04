@@ -1,0 +1,1 @@
+near create-account $CONTRACT_NAME --masterAccount knowledge_graph.testnet --initialBalance 5

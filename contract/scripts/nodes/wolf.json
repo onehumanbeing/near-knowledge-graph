@@ -1,0 +1,10 @@
+{
+    "related_node_id": "2",
+    "data": {
+        "name": "Wolf",
+        "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Howlsnow.jpg/440px-Howlsnow.jpg",
+        "data": "https://simple.wikipedia.org/wiki/Wolf"
+    },
+    "relation_from": "hunt",
+    "relation_to": "hunt"
+}

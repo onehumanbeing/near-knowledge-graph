@@ -1,0 +1,13 @@
+[package]
+name = "knowledge_graph"
+version = "1.0.0"
+authors = ["Henry <i@qaqrz.xyz>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = "4.0.0-pre.4"
+serde_json = "1.0"
+near-units = "0.2.0"
