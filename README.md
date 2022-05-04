@@ -17,6 +17,8 @@
  |___ frontend                 react, yarn start
 ```
 
+view [Demo](https://onehumanbeing.github.io/near_knowledge_graph/sandbox)
+
 this is a demo project while joining NCD Certification, I consider working on this demo because of it's value.
 We use smart contract to store our assert and relations, such as metaverse lands, human social relationship.
 It's cool to save them on contract.
