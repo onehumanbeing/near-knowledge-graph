@@ -1,6 +1,6 @@
 {
-  "homepage": "",
-  "name": "graph",
+  "homepage": "https://onehumanbeing.github.io/near_knowledge_graph",
+  "name": "near_knowledge_graph",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
