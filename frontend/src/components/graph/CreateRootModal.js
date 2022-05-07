@@ -1,3 +1,6 @@
+/* 
+Modal for create a new node related with one current node
+*/
 import React, { useEffect, useState, useCallback } from "react";
 import {
     createRoot

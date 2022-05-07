@@ -1,3 +1,6 @@
+/* 
+Modal for create a new root with a new node
+*/
 import React, { useEffect, useState, useCallback } from "react";
 import {
     createNode

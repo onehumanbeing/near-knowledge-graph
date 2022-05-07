@@ -1,3 +1,6 @@
+/* 
+Modal for create relation between two nodes
+*/
 import React, { useEffect, useState, useCallback } from "react";
 import {
     createRelation

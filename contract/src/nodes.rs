@@ -2,6 +2,7 @@ use crate::*;
 use near_sdk::AccountId;
 use near_sdk::collections::UnorderedMap;
 
+// type of a Node
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct MemberTreeNode {
     pub index: String,
@@ -14,7 +15,7 @@ pub struct MemberTreeNode {
     pub storage: u128
 }
 
-
+// view request data type
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
 #[serde(crate = "near_sdk::serde")]
 pub struct JsonMemberNode {
@@ -27,6 +28,7 @@ pub struct JsonMemberNode {
     pub storage: U128
 }
 
+// request data for creating a node
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
 #[serde(crate = "near_sdk::serde")]
 pub struct CreateNodeRequest {
@@ -35,6 +37,7 @@ pub struct CreateNodeRequest {
     pub data: Option<String>
 }
 
+// root list response data type
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
 #[serde(crate = "near_sdk::serde")]
 pub struct JsonRoot {
@@ -45,6 +48,7 @@ pub struct JsonRoot {
 
 
 impl MemberTreeNode {
+    // init a node
     pub fn new(
         data: CreateNodeRequest, account_id: AccountId,
         index: String
@@ -63,6 +67,7 @@ impl MemberTreeNode {
         }
     }
 
+    // get a node to json
     pub fn to_json(&self) -> JsonMemberNode {
         JsonMemberNode {
             index: self.index.clone(),
@@ -75,6 +80,7 @@ impl MemberTreeNode {
         }
     }
 
+    // add relation between two nodes
     pub fn add_relation(&mut self, relation_type: &String, node_id: &String) {
         if self.relations.len() >= 50 {
             env::panic_str("Can't add more relations now")

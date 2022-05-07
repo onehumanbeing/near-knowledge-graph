@@ -1,3 +1,6 @@
+/*
+Graph Menu components with graph loading functions
+*/
 import React, { useEffect, useState, useCallback } from "react";
 import {
   getRoots as getRootList,
@@ -39,13 +42,17 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
   }
 
   const getRootNode = useCallback(async (node_id, x, y, originAngle) => {
+    // DFS loading graph
     try {
       if(x === centerX) {
+        // means that this is a new graph, clean old data and reload everything
         setNodes({});
         setLinks({});
         graphData = emptyGraph();
       }
+      // use get_node rpc
       let node = await getNode(node_id);
+      // if node is loaded in recursion
       if(node.index in nodes) {
         // repeat loading
         return
@@ -53,10 +60,11 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
       graphData.nodes.push(parseNode(node, x, y));
       nodes[node.index] = node;
       setNodes(nodes);
-      // console.log("node.relations.length", node.relations.length)
       if(node.relations.length > 0) {
+        // get all links from relation
         let relation_links = parseLink(node);
         for(let i=0;i<relation_links.length;i++) {
+          // relation is repeat loading, continue
           if(relation_links[i].index in links) {
             continue;
           }
@@ -66,23 +74,23 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
           }
         }
         setLinks(links);
+        // set a start angle for origin node to move
         let angle = Math.PI / node.relations.length;
-        var current_angle = Math.PI * 3 / 8;
+        // var current_angle = Math.PI * 3 / 8;
+        // distance r
         let r = 100;
         for(let i=0;i<node.relations.length;i++) {
           let related_node_id = node.relations[i][1];
-          // console.log("related", related_node_id)
           if(!(related_node_id in nodes)) {
-            console.log("await", related_node_id)
+            // calc a angle with direction and gen a new node, make it better to see
             let n = await getRootNode(related_node_id, x + r*Math.sin(originAngle), y + r*Math.cos(originAngle), originAngle + Math.PI / 4);
             originAngle += angle;
           }
         }        
       }
       console.log(graphData);
-      setGraphData(graphData);
-      // start to get relations
-      
+      // finally set the new graph data
+      setGraphData(graphData);      
     } catch (error) {
       console.log({ error });
     } finally {

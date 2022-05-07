@@ -1,9 +1,11 @@
+// Write function of nodes 
 use near_sdk::{env, near_bindgen};
 use crate::*;
 use crate::nodes::*;
 
 #[near_bindgen]
 impl Contract {
+    // create a new graph with a root node
     #[payable]
     pub fn create_root(
         &mut self, 
@@ -58,6 +60,7 @@ impl Contract {
         node.to_json()
     }
 
+    // create a new relation between two nodes
     #[payable]
     pub fn create_relation(
         &mut self, 

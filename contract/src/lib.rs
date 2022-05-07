@@ -45,7 +45,7 @@ pub struct Contract {
     data: VersionedContractData
 }
 
-
+// VersionedContractData design to migrate contrart state later if needed.
 #[near_bindgen]
 impl Contract {
     #[init]
@@ -145,6 +145,7 @@ mod tests {
         contract.create_relation(node_id, related_node_id, String::from("1"), String::from("1"));
     }
 
+    // basics test, create a 3 nodes graph and connect them
     #[test]
     fn test_create_nodes() {
         let (mut context, mut contract) = setup_contract();
@@ -163,6 +164,7 @@ mod tests {
         assert_eq!(root.unwrap().relations.len(), 2);
     }
 
+    // test search_name function
     #[test]
     fn test_search_name() {
         let (mut context, mut contract) = setup_contract();
