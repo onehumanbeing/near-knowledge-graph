@@ -1,21 +1,20 @@
 /*
 Graph Menu components with graph loading functions
 */
+import { toast } from "react-toastify";
 import React, { useEffect, useState, useCallback } from "react";
 import {
   getRoots as getRootList,
-  getNode, getNodes
+  getNode
 } from "../../utils/api";
 import {
-  emptyGraph, parseLink, parseNode, genLinkIndex
+  emptyGraph, parseLink, parseNode
 } from "../../utils/graph";
 import { IoReloadSharp, IoAddCircleOutline } from 'react-icons/io5';
-import { link } from "fs";
 import CreateRootModal from "./CreateRootModal.js"
 
 
-export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNodes}) => {
-  const [loading, setLoading] = useState(false);
+export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNodes, address}) => {
   const [showCreateModel, setShowCreateModel] = useState(false);
   const [roots, setRoots] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState([]);
@@ -25,20 +24,26 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
   const centerY = 250;
   const startAngle = Math.PI * 3 / 8;
 
-  const getRoots = useCallback(async () => {
+  const getRoots = async () => {
     try {
-      setLoading(true);
       setRoots(await getRootList());
     } catch (error) {
       console.log({ error });
     } finally {
-      setLoading(false);
     }
-  });
+  };
 
   const onClickMenu = (key) => {
     setSelectedMenu(key)
     setRootId(key);
+  }
+
+  const onClickCreateRoot = () => {
+    if(!address) {
+      toast(`Please connect your wallet first`);
+      return
+    }
+    setShowCreateModel(true);
   }
 
   const getRootNode = useCallback(async (node_id, x, y, originAngle) => {
@@ -100,17 +105,17 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
   
   useEffect(() => {
     getRoots();
-  }, []);
+  });
 
   useEffect(() => {
-    if(rootId == "" && roots.length != 0) {
+    if(rootId === "" && roots.length !== 0) {
       setRootId(roots[0]?.index);
       return;
     }
   }, [roots]);
 
   useEffect(() => {
-    if(rootId == "") {
+    if(rootId === "") {
       return;
     }
     // load root first
@@ -127,7 +132,7 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
         </div>
       </div>
       
-      <div className="create_root_bar" onClick={() => { setShowCreateModel(true) }}>
+      <div className="create_root_bar" onClick={() => { onClickCreateRoot() }}>
         <IoAddCircleOutline style={{marginTop: "4px"}} />
         <span className="black_border_bottom" style={{lineHeight: "24px", marginLeft: "5px"}}>Create new graph</span>
       </div>

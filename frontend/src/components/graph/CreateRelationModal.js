@@ -1,7 +1,7 @@
 /* 
 Modal for create relation between two nodes
 */
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import {
     createRelation
 } from "../../utils/api";
@@ -13,8 +13,6 @@ export const CreateRelationModal = ({nodes, nodeId, setNodeId, relatedNodeId, se
         setRelatedNodeId("");
         setShow(false);
     };
-    const defaultMedia = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pomegranate_Juice_%282019%29.jpg/440px-Pomegranate_Juice_%282019%29.jpg";
-    const defaultDataUrl = "https://en.wikipedia.org/wiki/Pomegranate";
     const [relation, setRelation] = useState("");
 
     const updateInputValue = (evt) => {
@@ -29,16 +27,16 @@ export const CreateRelationModal = ({nodes, nodeId, setNodeId, relatedNodeId, se
     return (
         <Modal size="lg" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{nodeId != "" && relatedNodeId != "" ? (<>Create Relation: {nodes[nodeId].name} #{nodeId} to {nodes[relatedNodeId].name} #{relatedNodeId}</>):(<></>)}</Modal.Title>
+            <Modal.Title>{nodeId !== "" && relatedNodeId !== "" ? (<>Create Relation: {nodes[nodeId].name} #{nodeId} to {nodes[relatedNodeId].name} #{relatedNodeId}</>):(<></>)}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          {nodeId != "" && relatedNodeId != "" ? ( <Container>
+          {nodeId !== "" && relatedNodeId !== "" ? ( <Container>
                 <Row>
                     <Col xs={12} md={4}>
                     <img src={nodes[nodeId].media} alt="Media" style={{ maxHeight: "250px", maxWidth: "440px" }}></img>
                     <p>Name: {nodes[nodeId].name}</p>
                     <p>ID: #{nodes[nodeId].index}</p>
-                    <p>Data: <a href={nodes[nodeId].data} target="_blank">view</a> </p>
+                    <p>Data: <a href={nodes[nodeId].data} target="_blank" rel="noreferrer" >view</a> </p>
                     <p>Current owner: {nodes[nodeId].account_id}</p>
                     <p>Deposit: {nodes[nodeId].storage} yoctoⓃ</p>
                     </Col>
@@ -46,7 +44,7 @@ export const CreateRelationModal = ({nodes, nodeId, setNodeId, relatedNodeId, se
                     <img src={nodes[relatedNodeId].media} alt="Media" style={{ maxHeight: "250px", maxWidth: "440px" }}></img>
                     <p>Name: {nodes[relatedNodeId].name}</p>
                     <p>ID: #{nodes[relatedNodeId].index}</p>
-                    <p>Data: <a href={nodes[relatedNodeId].data} target="_blank">view</a> </p>
+                    <p>Data: <a href={nodes[relatedNodeId].data} target="_blank" rel="noreferrer" >view</a> </p>
                     <p>Current owner: {nodes[relatedNodeId].account_id}</p>
                     <p>Deposit: {nodes[relatedNodeId].storage} yoctoⓃ</p>
                     </Col>

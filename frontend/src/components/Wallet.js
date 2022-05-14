@@ -1,7 +1,8 @@
 import React from "react";
 import { Dropdown, Stack, Spinner } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-const Wallet = ({ address, amount, symbol, destroy }) => {
+const Wallet = ({ address, amount, symbol, destroy, login }) => {
   if (address) {
     return (
       <>
@@ -47,9 +48,19 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
         </Dropdown>
       </>
     );
+  } else {
+    return (
+      <>
+        <Button
+          onClick={login}
+          variant="outline-light"
+          className="rounded-pill px-3 mt-3"
+        >
+          Connect Wallet
+        </Button>
+      </>
+    )
   }
-
-  return null;
 };
 
 export default Wallet;

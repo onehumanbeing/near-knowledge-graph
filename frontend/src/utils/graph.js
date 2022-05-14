@@ -33,7 +33,7 @@ export function parseNode(item, x, y) {
 }
 
 export function parseLink(item) {
-    var data = Array();
+    var data = [];
     for(let i=0; i<item.relations.length; i++)
     {
         data.push({

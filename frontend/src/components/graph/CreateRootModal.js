@@ -1,11 +1,11 @@
 /* 
 Modal for create a new node related with one current node
 */
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import {
     createRoot
 } from "../../utils/api";
-import { InputGroup, Button, FormControl, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 
 export const CreateRootModal = ({rootId, setRootId, show, setShow}) => {
     const handleClose = () => setShow(false);
@@ -21,7 +21,7 @@ export const CreateRootModal = ({rootId, setRootId, show, setShow}) => {
     const updateInputValue = (evt) => {
         // console.log(evt.target.id, evt.target.value);
         var changeData = {...data}
-        if(evt.target.id == "title") {
+        if(evt.target.id === "title") {
             changeData[evt.target.id] = evt.target.value;
         } else {
             changeData["data"][evt.target.id] = evt.target.value;

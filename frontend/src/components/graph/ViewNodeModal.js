@@ -1,14 +1,15 @@
 /* 
 Modal for create a new root with a new node
 */
-import React, { useEffect, useState, useCallback } from "react";
+import { toast } from "react-toastify";
+import React, { useState } from "react";
 import {
     createNode
 } from "../../utils/api";
 import { Button, Modal, Form, Container, Row, Col } from "react-bootstrap";
 import { IoChevronForwardSharp } from 'react-icons/io5';
 
-export const ViewNodeModal = ({node, setNode, nodes, show, setShow}) => {
+export const ViewNodeModal = ({node, setNode, nodes, show, setShow, address}) => {
     const handleClose = () => setShow(false);
     const defaultMedia = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pomegranate_Juice_%282019%29.jpg/440px-Pomegranate_Juice_%282019%29.jpg";
     const defaultDataUrl = "https://en.wikipedia.org/wiki/Pomegranate";
@@ -22,10 +23,18 @@ export const ViewNodeModal = ({node, setNode, nodes, show, setShow}) => {
     });
     const [isCreate, setIsCreate] = useState(false);
 
+    const onClickCreateView = () => {
+      if(!address) {
+        toast(`Please connect your wallet first`);
+        return
+      }
+      setIsCreate(true);
+    }
+
     const updateInputValue = (evt) => {
         // console.log(evt.target.id, evt.target.value);
         var changeData = {...data}
-        if(evt.target.id == "relation") {
+        if(evt.target.id === "relation") {
             changeData[evt.target.id] = evt.target.value;
         } else {
             changeData["data"][evt.target.id] = evt.target.value;
@@ -99,7 +108,7 @@ export const ViewNodeModal = ({node, setNode, nodes, show, setShow}) => {
             <Modal size="lg" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Node {node.name} [#{node.index}]</Modal.Title>
-            <Button variant="primary" onClick={() => { setIsCreate(true) }} style={{ marginLeft: "25px" }}>
+            <Button variant="primary" onClick={() => { onClickCreateView() }} style={{ marginLeft: "25px" }}>
               Create Node
             </Button>
           </Modal.Header>
@@ -107,8 +116,8 @@ export const ViewNodeModal = ({node, setNode, nodes, show, setShow}) => {
           <img src={node.media} alt="Media" style={{ maxHeight: "250px", maxWidth: "440px" }}></img>
           <p>Name: {node.name}</p>
           <p>ID: #{node.index}</p>
-          <p>Data: <a href={node.data} target="_blank">view</a> </p>
-          <p>Current owner: <a href={"https://explorer.testnet.near.org/accounts/" + node.account_id} target="_blank">{node.account_id}</a></p>
+          <p>Data: <a href={node.data} target="_blank" rel="noreferrer">view</a> </p>
+          <p>Current owner: <a href={"https://explorer.testnet.near.org/accounts/" + node.account_id} target="_blank" rel="noreferrer">{node.account_id}</a></p>
           <p>Deposit: {node.storage} yoctoⓃ</p>
           <h3>Relations</h3>
           <p>click ID to view node</p>
@@ -137,7 +146,7 @@ export const ViewNodeModal = ({node, setNode, nodes, show, setShow}) => {
                         <img src={nodes[item[1]].media} alt="Media" style={{ maxHeight: "75px", maxWidth: "75px" }}></img>
                     </Col>
                     <Col xs={4} md={2}>
-                        <a href={nodes[item[1]].data} target="_blank">view</a>
+                        <a href={nodes[item[1]].data} target="_blank" rel="noreferrer">view</a>
                     </Col>
                 </Row>
               ) : (

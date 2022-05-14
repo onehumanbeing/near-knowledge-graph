@@ -10,7 +10,7 @@ import ViewNodeModal from "./ViewNodeModal.js"
 import CreateRelationModal from "./CreateRelationModal.js"
 
 export const NearGraph = ({
-  graphData, setRootId, nodes
+  graphData, setRootId, nodes, address
 }) => {
     const [nodeId, setNodeId] = useState("");
     const [relatedNodeId, setRelatedNodeId] = useState("");
@@ -79,14 +79,18 @@ export const NearGraph = ({
     const onRightClickNode = (event, id, node) => {
       event.preventDefault();
       // toast(`Right clicked node ${id} in position (${node.x}, ${node.y})`);
+      if(!address) {
+        toast(`Please connect your wallet first`);
+        return
+      }
       if(id in nodes) {
-        if(nodeId == id) {
+        if(nodeId === id) {
           toast(`cancel relate node ${nodes[id].name} #${id}`);
           setNodeId("");
           setRelatedNodeId("");
           return;
         }
-        if(nodeId == "") {
+        if(nodeId === "") {
           toast(`Selected relate node ${nodes[id].name} #${id}`);
           setNodeId(id);
           setRelatedNodeId("");
@@ -111,7 +115,7 @@ export const NearGraph = ({
     });
   
     const searchWordChange = (event) => {
-      if(event.target.value == '')
+      if(event.target.value === '')
       {
         setNames([]);
       } else {
@@ -126,7 +130,7 @@ export const NearGraph = ({
 
     return (
       <div className="near_graph" style={{padding: "5px"}}>
-        <ViewNodeModal nodes={nodes} setNode={setNode} node={node} setRootId={setRootId} show={showViewModel} setShow={setShowViewModel} ></ViewNodeModal>
+        <ViewNodeModal nodes={nodes} setNode={setNode} node={node} setRootId={setRootId} show={showViewModel} setShow={setShowViewModel} address={address} ></ViewNodeModal>
         <CreateRelationModal show={showCreateModel} setShow={setShowCreateModel} nodes={nodes} nodeId={nodeId} setNodeId={setNodeId} 
               relatedNodeId={relatedNodeId} setRelatedNodeId={setRelatedNodeId}></CreateRelationModal>
         <div style={{padding: "15px 15px 0px 15px"}}>
