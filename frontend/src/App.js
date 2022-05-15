@@ -37,7 +37,7 @@ const App = function AppWrapper() {
           <Nav className="justify-content-between align-items-center pt-3 pb-3 mb-2" style={{ backgroundColor: "black", padding: "15px" }}>
             <Nav.Item>
               <a href="https://www.zsrtech.com"><img className="nav-icon" src={coverImg} alt="" style={{float: "left"}} /></a>
-              <span style={{float: "left", color: "white", lineHeight: "40px", height: "40px", marginLeft: "20px"}}>Near knowledge graph</span>
+              <span style={{float: "left", color: "white", lineHeight: "40px", height: "40px", marginLeft: "20px"}}><b>Near knowledge graph</b></span>
             </Nav.Item>
             <Nav.Item>
               <Wallet

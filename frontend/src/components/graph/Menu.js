@@ -22,7 +22,7 @@ export const Menu = ({graphData, setGraphData, rootId, setRootId, nodes, setNode
   const [links, setLinks] = useState({});
   const centerX = 750;
   const centerY = 250;
-  const startAngle = Math.PI * 3 / 8;
+  const startAngle = Math.PI * 11 / 8;
 
   const getRoots = async () => {
     try {
